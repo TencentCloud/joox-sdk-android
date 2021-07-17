@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    app:layout_constraintVertical_chainStyle="spread"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/radio_group_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_22"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="401错误码细分验证:"
+        />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <RadioButton
+            android:id="@+id/scope_token_invalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置无效scope（验证：-40101）, 跳转重新登陆"
+            android:textSize="14sp"
+            />
+
+        <RadioButton
+            android:id="@+id/token_expired_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置token过期（验证：-40102）"
+            android:textSize="14sp"
+            />
+
+        <RadioButton
+            android:id="@+id/token_invalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置token失效（验证：-40103）"
+            android:textSize="14sp"
+            />
+
+        <RadioButton
+            android:id="@+id/token_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置token为空（验证：-40105）"
+            android:textSize="14sp"
+            />
+
+    </RadioGroup>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/radio_group"
+        app:layout_constraintBottom_toTopOf="@+id/player_tx"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/debug_api_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open API Debug"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/refresh_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="refresh userInfo"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/debug_api_tx"
+        app:layout_constraintBottom_toTopOf="@+id/player_tx"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/player_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Player"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/refresh_tx"
+        app:layout_constraintBottom_toTopOf="@+id/category"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发现歌单"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/player_tx"
+        app:layout_constraintBottom_toTopOf="@+id/input_song_id"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/input_song_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="输入歌单id"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/category"
+        app:layout_constraintBottom_toTopOf="@+id/tx_id3_test"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/tx_id3_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="id3_test"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/input_song_id"
+        app:layout_constraintBottom_toTopOf="@+id/log_out"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+
+    <Button
+        android:id="@+id/log_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="log out"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/tx_id3_test"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</android.support.constraint.ConstraintLayout>
