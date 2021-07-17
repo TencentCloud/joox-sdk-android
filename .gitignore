@@ -1,13 +1,10 @@
-build/
+*/build/
 *.iml
 local.properties
 wemusic/release/wemusic.aab
 flutterConfig.gradle
 
-./.DS_Store
-*/.DS_Store
-**/.DS_Store
-*.apk
+*.DS_Store
 Tools/wording
 **/.externalNativeBuild
 
