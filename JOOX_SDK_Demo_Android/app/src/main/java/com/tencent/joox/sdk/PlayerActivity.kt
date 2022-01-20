@@ -232,7 +232,7 @@ class PlayerActivity : AppCompatActivity(), AppPlayManager.PlayerListener {
         }
         Toast.makeText(applicationContext, "开始下载", Toast.LENGTH_SHORT).show()
         downTask = SDKInstance.getmInstance().down(trackItem.id, AppPlayManager.getInstance().quality, object : Callback {
-            override fun onComplete() {
+            override fun onComplete(outFilePath: String?) {
                 Log.e("test", "down finish")
                 Toast.makeText(applicationContext, "下载完成", Toast.LENGTH_SHORT).show()
                 down.setText("下载")

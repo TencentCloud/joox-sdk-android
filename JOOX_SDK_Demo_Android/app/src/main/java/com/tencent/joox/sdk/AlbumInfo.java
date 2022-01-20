@@ -1,9 +1,9 @@
 package com.tencent.joox.sdk;
 
-import com.joox.sdklibrary.kernel.dataModel.BaseSongInfo;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.joox.sdklibrary.kernel.dataModel.BaseSongInfo;
 
 public class AlbumInfo {
 
