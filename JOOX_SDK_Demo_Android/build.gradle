@@ -5,6 +5,9 @@ buildscript {
     ext.kotlin_version = '1.2.61'
     repositories {
         maven {
+            url "https://mirrors.tencent.com/nexus/repository/maven-public/"
+        }
+        maven {
             url "http://maven.oa.com/nexus/content/repositories/jcenter"
         }
         maven {
@@ -34,6 +37,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/maven-public/"
+        }
         maven {
             url "http://maven.oa.com/nexus/content/repositories/jcenter"
         }
