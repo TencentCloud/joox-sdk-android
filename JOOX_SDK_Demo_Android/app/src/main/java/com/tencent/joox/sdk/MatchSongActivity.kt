@@ -6,8 +6,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.os.Environment
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.joox.sdklibrary.SDKInstance
 import com.joox.sdklibrary.kernel.dataModel.MetaData
 import com.joox.sdklibrary.localsong.SongMatchManager
@@ -97,7 +97,7 @@ class MatchSongActivity : AppCompatActivity() {
                 btn_copy_songid.setOnClickListener {
                     val cm: ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                     val mClipData = ClipData.newPlainText("Label", songId)
-                    cm.primaryClip = mClipData
+                    cm.setPrimaryClip(mClipData)
                     Toast.makeText(this@MatchSongActivity, "$songId 已复制到剪切板", Toast.LENGTH_SHORT).show()
                 }
             }

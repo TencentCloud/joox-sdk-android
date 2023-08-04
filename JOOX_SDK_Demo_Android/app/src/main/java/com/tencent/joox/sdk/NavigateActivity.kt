@@ -2,16 +2,26 @@ package com.tencent.joox.sdk
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.joox.sdklibrary.AuthState
 import com.joox.sdklibrary.SDKInstance
 import com.joox.sdklibrary.SDKListener
 import com.tencent.joox.sdk.songlisttest.CategoryActivity
 import com.tencent.joox.sdk.songlisttest.InputSongListIdActivity
-import kotlinx.android.synthetic.main.activity_navigate.*
+import kotlinx.android.synthetic.main.activity_navigate.category
+import kotlinx.android.synthetic.main.activity_navigate.debug_api_tx
+import kotlinx.android.synthetic.main.activity_navigate.input_song_id
+import kotlinx.android.synthetic.main.activity_navigate.log_out
+import kotlinx.android.synthetic.main.activity_navigate.player_tx
+import kotlinx.android.synthetic.main.activity_navigate.refresh_tx
+import kotlinx.android.synthetic.main.activity_navigate.scope_token_invalid
+import kotlinx.android.synthetic.main.activity_navigate.token_empty
+import kotlinx.android.synthetic.main.activity_navigate.token_expired_time
+import kotlinx.android.synthetic.main.activity_navigate.token_invalid
+import kotlinx.android.synthetic.main.activity_navigate.tx_id3_test
 import kotlin.system.exitProcess
 
 class NavigateActivity : AppCompatActivity() , SDKListener {

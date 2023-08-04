@@ -1,12 +1,16 @@
 package com.tencent.joox.sdk
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.joox.sdklibrary.SDKInstance
 import com.joox.sdklibrary.kernel.network.SceneBase
-import kotlinx.android.synthetic.main.activity_second.*
+import kotlinx.android.synthetic.main.activity_second.et_method
+import kotlinx.android.synthetic.main.activity_second.et_param
+import kotlinx.android.synthetic.main.activity_second.login_text
+import kotlinx.android.synthetic.main.activity_second.request_btn
+import kotlinx.android.synthetic.main.activity_second.result_tx
 
-class SecondActivity :AppCompatActivity(){
+class SecondActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

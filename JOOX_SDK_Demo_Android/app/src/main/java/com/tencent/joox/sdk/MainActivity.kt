@@ -4,15 +4,13 @@ import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
-import com.google.gson.GsonBuilder
+import androidx.appcompat.app.AppCompatActivity
 import com.joox.sdklibrary.AuthState
 import com.joox.sdklibrary.AuthType
 import com.joox.sdklibrary.SDKInstance
 import com.joox.sdklibrary.SDKListener
-import com.joox.sdklibrary.kernel.network.SceneBase
-import com.tencent.mars.xlog.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), SDKListener {
