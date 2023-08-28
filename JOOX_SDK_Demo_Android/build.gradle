@@ -1,33 +1,39 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.71'
-    ext.kotlin_version = '1.2.61'
+    ext.kotlin_version = '1.6.0'
     repositories {
         maven {
             url "https://mirrors.tencent.com/nexus/repository/maven-public/"
         }
         maven {
-            url "http://maven.oa.com/nexus/content/repositories/jcenter"
+            url "https://maven.oa.com/nexus/content/repositories/jcenter"
         }
         maven {
-            url "http://maven.oa.com/nexus/content/groups/androidbuild"
+            url "https://maven.oa.com/nexus/content/groups/androidbuild"
         }
 
         maven{
-            url "http://maven.oa.com/nexus/content/repositories/thirdparty-snapshots"
+            url "https://maven.oa.com/nexus/content/repositories/thirdparty-snapshots"
         }
         maven {
-            url "http://maven.oa.com/nexus/content/repositories/jitpack.io"
+            url "https://maven.oa.com/nexus/content/repositories/jitpack.io"
         }
 
         maven {
-            url "http://maven.oa.com/nexus/content/repositories/google-maven/"
+            url "https://maven.oa.com/nexus/content/repositories/google-maven/"
+        }
+        maven {
+            url codingArtifactsRepoUrl
+            credentials {
+                username = codingArtifactsGradleUsername
+                password = codingArtifactsGradlePassword
+            }
         }
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:7.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.kezong:fat-aar:1.2.8'
         // NOTE: Do not place your application dependencies here; they belong
@@ -41,22 +47,30 @@ allprojects {
             url "https://mirrors.tencent.com/nexus/repository/maven-public/"
         }
         maven {
-            url "http://maven.oa.com/nexus/content/repositories/jcenter"
+            url "https://maven.oa.com/nexus/content/repositories/jcenter"
         }
         maven {
-            url "http://maven.oa.com/nexus/content/groups/androidbuild"
+            url "https://maven.oa.com/nexus/content/groups/androidbuild"
         }
 
         maven{
-            url "http://maven.oa.com/nexus/content/repositories/thirdparty-snapshots"
+            url "https://maven.oa.com/nexus/content/repositories/thirdparty-snapshots"
         }
         maven {
-            url "http://maven.oa.com/nexus/content/repositories/jitpack.io"
+            url "https://maven.oa.com/nexus/content/repositories/jitpack.io"
         }
 
         maven {
-            url "http://maven.oa.com/nexus/content/repositories/google-maven/"
+            url "https://maven.oa.com/nexus/content/repositories/google-maven/"
         }
+        maven {
+            url codingArtifactsRepoUrl
+            credentials {
+                username = codingArtifactsGradleUsername
+                password = codingArtifactsGradlePassword
+            }
+        }
+
     }
 }
 
