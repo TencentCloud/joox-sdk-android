@@ -1,89 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tencent.joox.sdk">
+        package="com.tencent.joox.sdk">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".SDKApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true" >
+            android:name=".SDKApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:resizeableActivity="true"
+            android:networkSecurityConfig="@xml/network_security_config"
+            android:usesCleartextTraffic="true">
+
 
         <meta-data
-            android:name="com.tencent.ibg.tia.app_key"
-            android:value="JOOX2018TIA02" />
+                android:name="com.tencent.ibg.tia.app_key"
+                android:value="JOOX2018TIA02" />
 
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
+        <activity
+                android:name=".MainActivity"
+                android:launchMode="singleInstance"
+                android:screenOrientation="portrait"
+                android:exported="true"
+                >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--        <activity android:name="com.tencent.jooxsdk.PlayerActivity">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity
+                android:name=".NavigateNewActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="@string/title_activity_navigate_new" />
 
-        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
+        <activity
+                android:name=".tools.SingInActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".tools.SecondActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.TestNavigateActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.joox.sdklibrary.kernel.jxapi.JXEntryActivity"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.player.PlayerActivity"
+                android:launchMode="singleTask"
+                android:screenOrientation="portrait" />
 
-        <activity android:name=".TestEnvActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity android:name=".business.search.SearchActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="stateVisible"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.CategoryActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.CategoryDetailActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.ArtistsTagActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.ArtistsSongsActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.InputSongListIdActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.test.SongListActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".business.matchsong.MatchSongActivity"
+                android:screenOrientation="portrait" />
+        <activity android:name=".business.songlist.MusicPlayListActivity"
+                android:screenOrientation="portrait"/>
 
-        <activity android:name=".SecondActivity"
-            android:screenOrientation="portrait"
-            ></activity>
+        <activity android:name=".business.settings.SettingActivity"
+                android:screenOrientation="portrait"
+                />
 
-        <activity android:name=".NavigateActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-
-        <activity android:name="com.joox.sdklibrary.kernel.jxapi.JXEntryActivity"
-            android:screenOrientation="portrait"
-            android:exported="true"
-            />
-
-        <activity android:name=".PlayerActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".songlisttest.CategoryActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".songlisttest.CategoryDetailActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".songlisttest.ArtistsActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".songlisttest.ArtistsSongsActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".songlisttest.InputSongListIdActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".songlisttest.SongListActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".MatchSongActivity"
-            android:screenOrientation="portrait"
-            />
-
-
+        <activity android:name=".business.artist.ArtistActivity"
+                android:screenOrientation="portrait"
+                />
     </application>
 
 </manifest>

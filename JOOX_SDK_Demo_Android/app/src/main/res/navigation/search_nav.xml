@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/search_nav"
+        app:startDestination="@id/searchTips">
+
+    <fragment
+            android:id="@+id/searchTips"
+            android:name="com.tencent.joox.sdk.business.search.SearchTipFragment"
+            android:label="SearchHint"
+            tools:layout="@layout/search_tip_layout" />
+
+
+    <fragment
+            android:id="@+id/searchHint"
+            android:name="com.tencent.joox.sdk.business.search.SearchHintFragment"
+            android:label="SearchHint"
+            tools:layout="@layout/search_hint_layout" />
+
+    <fragment
+            android:id="@+id/searchTabs"
+            android:name="com.tencent.joox.sdk.business.search.SearchTabListFragment"
+            android:label="SearchHint"
+            tools:layout="@layout/search_tab_list_layout" />
+
+
+</navigation>

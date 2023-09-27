@@ -14,7 +14,7 @@
         android:id="@+id/radio_group_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black_22"
+        android:textColor="#222222"
         android:textSize="14sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -132,12 +132,22 @@
         android:text="id3_test"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/input_song_id"
-        app:layout_constraintBottom_toTopOf="@+id/log_out"
+        app:layout_constraintBottom_toTopOf="@+id/test_timeout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
 
-
+    <Button
+        android:id="@+id/test_timeout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test timeout"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/tx_id3_test"
+        app:layout_constraintBottom_toTopOf="@+id/log_out"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <Button
         android:id="@+id/log_out"
@@ -145,7 +155,7 @@
         android:layout_height="wrap_content"
         android:text="log out"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/tx_id3_test"
+        app:layout_constraintTop_toBottomOf="@+id/test_timeout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

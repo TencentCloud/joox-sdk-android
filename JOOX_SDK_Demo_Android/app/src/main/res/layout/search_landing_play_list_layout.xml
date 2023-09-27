@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="top"
+        android:orientation="vertical">
+
+    <ImageView
+            android:id="@+id/cover_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_default_cover" />
+
+    <View
+            android:id="@+id/cover_gradient_bg"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/discover_item_mask" />
+
+
+    <TextView
+            android:id="@+id/item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="left"
+            android:includeFontPadding="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:singleLine="true"
+            android:layout_above="@id/track_count_view"
+            />
+
+    <LinearLayout
+            android:id="@+id/track_count_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_alignBottom="@id/cover_img">
+
+        <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/icon_music"
+                android:alpha="0.5"/>
+
+        <TextView
+                android:id="@+id/track_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:gravity="left"
+                android:includeFontPadding="false"
+                android:textSize="12sp"
+                android:textColor="@color/grey_66ffff"
+                android:singleLine="true"
+                />
+    </LinearLayout>
+
+
+</RelativeLayout>

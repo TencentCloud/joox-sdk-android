@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@android:color/black">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:layout_gravity="center"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/edit_ticket_token"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:textSize="10sp" />
-
-        <TextView
-            android:id="@+id/sample_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="log in!"
-            android:textSize="14sp"
-            android:layout_marginBottom="20dp"/>
-        <TextView
-            android:id="@+id/debug_tool"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="debug"
-            android:textSize="14sp"
-            android:layout_marginBottom="20dp"
+    <ImageView
+            android:id="@+id/icon_logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/new_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
             />
 
-</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout >
 

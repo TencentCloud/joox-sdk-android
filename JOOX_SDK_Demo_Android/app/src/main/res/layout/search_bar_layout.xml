@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="11dp"
+        android:background="@drawable/search_bar_bg">
+
+
+    <ImageView
+            android:id="@+id/icon_delete"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:scaleType="center"
+            android:clickable="false"
+            android:background="@drawable/icon_search_clear"
+            android:visibility="visible" />
+
+
+    <EditText
+            android:id="@+id/search_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/icon_lift"
+            android:layout_toLeftOf="@id/icon_delete"
+            android:background="@null"
+            android:ems="10"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:textColor="@android:color/black"
+            android:textColorHint="#66000000"
+            android:textSize="14sp"
+            android:hint="What do you want to hear?"
+            android:ellipsize="end"/>
+</RelativeLayout>
+
+

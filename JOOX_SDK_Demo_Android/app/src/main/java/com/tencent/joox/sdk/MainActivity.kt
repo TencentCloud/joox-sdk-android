@@ -4,97 +4,71 @@ import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.gyf.immersionbar.ImmersionBar
 import com.joox.sdklibrary.AuthState
 import com.joox.sdklibrary.AuthType
 import com.joox.sdklibrary.SDKInstance
 import com.joox.sdklibrary.SDKListener
-import kotlinx.android.synthetic.main.activity_main.*
+import com.tencent.joox.sdk.business.subscribe.SubscribeManager
+import com.tencent.joox.sdk.databinding.ActivityMainBinding
+import com.tencent.joox.sdk.tools.SharedPreferencesTool
+import com.tencent.joox.sdk.tools.SingInActivity
+import com.tencent.joox.sdk.utils.PermissionUtil
 
-class MainActivity : AppCompatActivity(), SDKListener {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binder: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initStoragePermission();
-        setContentView(R.layout.activity_main)
-        // Example of a call to a native method
-        SDKInstance.getmInstance().registerListener(this)
-        sample_text.setText("login via "+ getLoginMethod() )
-        debug_tool.setOnClickListener {
+        binder = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binder.root)
+        fullScreen()
+        toNext()
+        finish()
+    }
+
+    private fun toNext() {
+        val tokenInfo = SDKInstance.getIns().tokenInfo
+        if (tokenInfo == null || TextUtils.isEmpty(tokenInfo.token) || tokenInfo.isTokenNotValid) {
+            // 重新登录
             val intent = Intent()
-            intent.setClass(this,TestEnvActivity::class.java)
+            intent.setClass(this, SingInActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT
             startActivity(intent)
-        }
-
-    }
-
-    @TargetApi(23)
-    fun initStoragePermission(){
-        if(Build.VERSION.SDK_INT > 23){
-            requestPermissions(PermissionUtil.permissions,1)
-        }
-    }
-
-    fun getLoginMethod(): String {
-        val loginType = SharedPreferencesTool.getmInstance(applicationContext)
-                .getIntValue(SharedPreferencesTool.LOGIN_TYPE, AuthType.AUTH_WITH_QRCODE)
-        return when (loginType) {
-            AuthType.AUTH_WITH_MOBILE -> {
-                "joox connect"
-            }
-            AuthType.AUTH_WITH_QRCODE -> {
-                "qr"
-            }
-            AuthType.AUTH_OPENID -> {
-                "openId"
-            }
-            AuthType.AUTH_TICKET_TOKEN -> {
-                edit_ticket_token.visibility = View.VISIBLE
-                "ticket token"
-            }
-            else -> "joox connect"
+        } else {
+            // 进入主页
+            val intent = Intent()
+            intent.setClass(this, NavigateNewActivity::class.java)
+            startActivity(intent)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        val  loginType = SharedPreferencesTool.getmInstance(applicationContext)
-                .getIntValue(SharedPreferencesTool.LOGIN_TYPE,AuthType.AUTH_WITH_QRCODE)
-        sample_text.setOnClickListener {
-            if(loginType == AuthType.AUTH_OPENID){
-                SDKInstance.mSessionKey = "";
-                SDKInstance.mOpenId = "";
-                SDKInstance.getmInstance().auth()
-            } else if (loginType == AuthType.AUTH_TICKET_TOKEN) {
-                SDKInstance.ticketToken = edit_ticket_token.text.toString();
-                SDKInstance.getmInstance().auth()
-            } else {
-                SDKInstance.getmInstance().auth()
-            }
-        }
     }
 
-    override fun currentAuthState(authState: Int) {
-        if (authState == AuthState.SUCCESS) {
-            val intent = Intent()
-            intent.setClass(this, NavigateActivity::class.java)
-            sample_text.text = "Login Already!"
-            startActivity(intent)
-        }else if(authState == AuthState.INITED){
-            sample_text.setText("login via "+ getLoginMethod() )
+    private fun fullScreen() {
+        ImmersionBar.with(this)
+                .fullScreen(true)
+                .navigationBarColor(android.R.color.transparent)
+                .navigationBarDarkIcon(true)
+                .init()
+    }
 
+    @TargetApi(23)
+    fun initStoragePermission() {
+        if (Build.VERSION.SDK_INT > 23) {
+            requestPermissions(PermissionUtil.permissions, 1)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        SDKInstance.getmInstance().unregisterListener(this)
-    }
-
-    override fun updateCurrentPlayState(playState: Int) {
-        Log.d("MainActivity", playState.toString())
     }
 }
