@@ -2,37 +2,53 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 
-apply from: 'tools.gradle'
+//apply from: 'tools.gradle'
 
 
+configurations.all {
+    // 设置 snapshot 缓存周期为 0，如果不想每次拉取，可以更改
+    resolutionStrategy.cacheChangingModulesFor 0, 'hours'
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'hours'
 
+}
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Integer.valueOf(project.properties.ANDROID_BUILD_TARGET_SDK_VERSION)
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        check 'UnusedResources'
+        warningsAsErrors true
+    }
+
+
     signingConfigs {
-        release {
-            storeFile rootProject.file("app/jooxsdkdemo.keystore")
-            storePassword "jooxjoox"
-            keyAlias "jooxjoox"
-            keyPassword "jooxjoox"
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
-        debug {
-            storeFile rootProject.file("app/jooxsdkdemo.keystore")
-            storePassword "jooxjoox"
-            keyAlias "jooxjoox"
-            keyPassword "jooxjoox"
-            v1SigningEnabled true
-            v2SigningEnabled true
+        signingConfigs {
+            release {
+                storeFile rootProject.file("app/jooxsdkdemo.keystore")
+                storePassword "jooxjoox"
+                keyAlias "jooxjoox"
+                keyPassword "jooxjoox"
+                v1SigningEnabled true
+                v2SigningEnabled true
+            }
+            debug {
+                storeFile rootProject.file("app/jooxsdkdemo.keystore")
+                storePassword "jooxjoox"
+                keyAlias "jooxjoox"
+                keyPassword "jooxjoox"
+                v1SigningEnabled true
+                v2SigningEnabled true
+            }
         }
     }
     defaultConfig {
         applicationId "com.tencent.joox.sdk"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -44,15 +60,26 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+    }
+    viewBinding {
+        enabled = true
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
     }
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
@@ -79,6 +106,9 @@ android {
             jniLibs.srcDirs = ['jniLibs']
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
 
 }
 
@@ -91,18 +121,23 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-    //api(name:'JOOX_SDK_2.1.0.5',ext:'aar')
-    api(name:'OpenSDK-release',ext:'aar')
-    api(name: 'fingerprint_pure_lib-1.0.2-release', ext: 'aar')
-    implementation("com.squareup.okhttp3:okhttp:3.12.4")
-    implementation 'com.tencent.mars:mars-xlog:1.2.3'
-    implementation "com.google.code.gson:gson:2.8.5"
-    implementation 'com.tencent:mmkv-static:1.1.0'
-    implementation("com.tme.joox:sdklibrary:1.0.4")
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    api(name:'bravah-4.0.1-debug',ext:'aar')
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.2")
+    implementation("androidx.navigation:navigation-compose:2.5.2")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.4.2")
+    implementation("org.greenrobot:eventbus:3.3.1")
+    implementation("com.tme.joox:sdklibrary:2.4.0.1")
 }
