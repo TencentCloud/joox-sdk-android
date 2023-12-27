@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/black"
         android:fitsSystemWindows="true"
-        tools:context=".NavigateNewActivity">
+        tools:context=".NavigateActivity">
 
     <include
             android:id="@+id/toolbar_home"

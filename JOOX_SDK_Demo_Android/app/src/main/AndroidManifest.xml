@@ -37,7 +37,7 @@
         </activity>
 
         <activity
-                android:name=".NavigateNewActivity"
+                android:name=".NavigateActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/title_activity_navigate_new" />
 

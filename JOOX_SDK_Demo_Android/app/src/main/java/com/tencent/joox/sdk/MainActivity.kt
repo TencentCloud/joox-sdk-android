@@ -5,17 +5,10 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
-import com.joox.sdklibrary.AuthState
-import com.joox.sdklibrary.AuthType
 import com.joox.sdklibrary.SDKInstance
-import com.joox.sdklibrary.SDKListener
-import com.tencent.joox.sdk.business.subscribe.SubscribeManager
 import com.tencent.joox.sdk.databinding.ActivityMainBinding
-import com.tencent.joox.sdk.tools.SharedPreferencesTool
 import com.tencent.joox.sdk.tools.SingInActivity
 import com.tencent.joox.sdk.utils.PermissionUtil
 
@@ -44,10 +37,12 @@ class MainActivity : AppCompatActivity() {
         } else {
             // 进入主页
             val intent = Intent()
-            intent.setClass(this, NavigateNewActivity::class.java)
+            intent.setClass(this, NavigateActivity::class.java)
             startActivity(intent)
         }
     }
+
+
 
     override fun onResume() {
         super.onResume()

@@ -4,6 +4,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import com.joox.sdklibrary.SDKInstance
+import com.joox.sdklibrary.kernel.auth.UserCallBack
+import com.joox.sdklibrary.kernel.dataModel.UserInfo
 import com.tencent.joox.sdk.business.library.entity.LibraryPageEntity
 import com.tencent.joox.sdk.business.subscribe.LikeContentType
 import com.tencent.joox.sdk.business.subscribe.SubscribeChangeListener
@@ -13,6 +16,8 @@ import com.tencent.joox.sdk.data.entity.PageState
 
 class LibraryViewModel : ViewModel(), SubscribeChangeListener {
 
+
+    private val subscribeUserData = MutableLiveData<UserInfo>()
     private val subscribePlayListData = MutableLiveData<LibraryPageEntity>()
 
     init {
@@ -28,6 +33,7 @@ class LibraryViewModel : ViewModel(), SubscribeChangeListener {
                 subscribePlayListData.value = LibraryPageEntity(PageState.ERROR, null)
             }
         }
+        refreshUserInfo()
     }
 
     fun observerSubscribePlayListDataState(owner: LifecycleOwner, observer: Observer<LibraryPageEntity>) {
@@ -40,6 +46,21 @@ class LibraryViewModel : ViewModel(), SubscribeChangeListener {
                load()
            }
        }
+    }
+
+    fun observerUserDataState(owner: LifecycleOwner, observer: Observer<UserInfo>) {
+        subscribeUserData.observe(owner, observer)
+    }
+
+    private fun refreshUserInfo(){
+        SDKInstance.getIns().refreshUserInfo(object : UserCallBack{
+
+            override fun onUserInfoSuccessful(p0: UserInfo?) {
+            }
+
+            override fun onUserInfoFail() {
+            }
+        })
     }
 
 }

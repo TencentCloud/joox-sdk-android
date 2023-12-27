@@ -70,6 +70,7 @@ class PlayerActivity : AppCompatActivity(), AppPlayManager.PlayerListener, View.
 
     private fun refreshSongInfo() {
         AppPlayManager.getInstance().currentTrackItem?.let {
+            refreshVip(it)
             refreshCover(it)
             refreshSongIntroduction(it)
             refreshSubscribeStatus(it.id)
@@ -77,6 +78,10 @@ class PlayerActivity : AppCompatActivity(), AppPlayManager.PlayerListener, View.
             refreshPlayStatus()
             refreshPlayMode()
         }
+    }
+
+    private fun refreshVip(it: TrackItem) {
+        binding.songVipLabel.visibility = if (it.vip_flag == 1) View.VISIBLE else View.GONE
     }
 
     private fun refreshPlayMode() {

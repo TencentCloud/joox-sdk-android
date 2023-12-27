@@ -291,7 +291,8 @@ public class AppPlayManager implements PlayCallBack, SDKListener{
     }
 
     @Override
-    public void currentAuthState(int authState) {
+    public void currentAuthState(int authState, int errCode, String errMsg) {
+
     }
 
     @Override

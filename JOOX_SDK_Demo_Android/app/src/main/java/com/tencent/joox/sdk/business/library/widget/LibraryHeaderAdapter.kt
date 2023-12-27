@@ -11,7 +11,7 @@ import com.joox.sdklibrary.kernel.dataModel.UserInfo
 import com.tencent.joox.sdk.databinding.LibraryHeaderLayoutBinding
 
 
-class LibraryHeaderAdapter(val data: UserInfo?) : BaseSingleItemAdapter<UserInfo, LibraryHeaderAdapter.ItemVH>(data) {
+class LibraryHeaderAdapter(data: UserInfo?) : BaseSingleItemAdapter<UserInfo, LibraryHeaderAdapter.ItemVH>(data) {
 
     class ItemVH(val viewBinding: LibraryHeaderLayoutBinding) : RecyclerView.ViewHolder(viewBinding.root)
 

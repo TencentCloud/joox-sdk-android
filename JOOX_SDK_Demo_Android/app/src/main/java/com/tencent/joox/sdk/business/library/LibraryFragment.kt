@@ -70,12 +70,23 @@ class LibraryFragment : Fragment() {
         subPlayListAdapter.isEmptyViewEnable = true
         subPlayListAdapter.setEmptyViewLayout(requireContext(), R.layout.footer_loading_view)
         fetch()
+        observerUserDataState()
         observerPageDataState()
     }
 
     private fun fetch() {
        model.load()
     }
+
+    private fun observerUserDataState() {
+        model.observerUserDataState(this) {
+            it?.let {
+                userHeaderAdapter.item = it
+                userHeaderAdapter.notifyDataSetChanged()
+            }
+        }
+    }
+
 
     private fun observerPageDataState() {
         model.observerSubscribePlayListDataState(this) {

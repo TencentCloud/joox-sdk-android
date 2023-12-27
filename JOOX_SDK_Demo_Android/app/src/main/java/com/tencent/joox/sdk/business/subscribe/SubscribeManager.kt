@@ -121,7 +121,7 @@ object SubscribeManager {
                 "&country=${EnvManager.getCountry()}" +
                 "&lang=${EnvManager.getLanguage()}" +
                 "&is_subscribe=${isSubscribe}" +
-                "&list_type=0"
+                "&list_type=$listType"
         SDKInstance.getIns().doJooxRequest(method, params, object : SceneBase.OnSceneBack {
             override fun onSuccess(responseCode: Int, JsonResult: String?) {
                 Log.d(TAG, "doLikeMusicPlayList onSuccess:${JsonResult}")

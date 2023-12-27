@@ -36,7 +36,7 @@ class TestNavigateActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binder.refreshTx.setOnClickListener {
-            SDKInstance.getIns().refreshUserInfo()
+            SDKInstance.getIns().refreshToken(null)
         }
         binder.playerTx.setOnClickListener{
             val intent = Intent()

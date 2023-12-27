@@ -16,7 +16,7 @@ import com.tencent.joox.sdk.tools.SingInActivity
 import com.tencent.joox.sdk.widget.adapter.NavigateFragmentStateAdapter
 
 
-class NavigateNewActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener, View.OnClickListener {
+class NavigateActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener, View.OnClickListener {
 
     companion object{
         private const val DISCOVER = 0

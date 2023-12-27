@@ -1,10 +1,10 @@
 package com.tencent.joox.sdk
 
 import android.app.Application
-import android.os.Build
 import android.util.Log
-import com.joox.sdklibrary.AuthType
+import com.joox.sdklibrary.SDKGlobal
 import com.joox.sdklibrary.SDKInstance
+import com.joox.sdklibrary.kernel.network.NetworkConfig
 import com.tencent.joox.sdk.data.ConstKey
 import com.tencent.joox.sdk.tools.SharedPreferencesTool
 import kotlin.properties.Delegates
@@ -21,6 +21,8 @@ class SDKApplication : Application() {
         Log.d("SDKApplication", "onCreate called!!!!");
         instance = this
         val scopeList = arrayListOf(getScopeList())
+        SDKGlobal.isDebug = BuildConfig.DEBUG
+        SDKGlobal.networkConfig = NetworkConfig(true)
         val appKey = "input app key"
         val appPkg = "input app package name"
         SDKInstance.getIns().init(instance, appKey, appPkg, scopeList)
