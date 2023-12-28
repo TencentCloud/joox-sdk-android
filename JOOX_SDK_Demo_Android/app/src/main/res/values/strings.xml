@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">JOOX_FOR_THIRD</string>
-    <string name="app_id">5d53b6c630375e6c0e453ae4</string>
     <string name="title_activity_navigate_new">NavigateNewActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
