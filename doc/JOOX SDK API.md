@@ -3,7 +3,7 @@
 ## API
 
 ```
-public void init(Context context, String deviceId,String appId,  String appName ,int authType, ArrayList<String> scopeList);
+public void init(Context context, String appId, String appName,  ArrayList<String> scopeList);
 ```
 
 ```
@@ -57,6 +57,9 @@ public void pausePlay();
 ```
 public void stopPlay();
 ```
+```
+public void setEnableRequestAudioFocus(boolean isEnable, boolean abandonAudioFocus);
+```
 
 Note:**urlPathString** need to be API name,**urlQueryString** need to be matched query parameters defined in https://docs.google.com/document/d/12TEjEWYzMIWyDvozBFIKGjziQtuMCRS7yd94Itn85Lg.
 
@@ -64,17 +67,6 @@ Note:**urlPathString** need to be API name,**urlQueryString** need to be matched
 public void doJooxRequest(String urlPathString,String urlQueryString, SceneBase.OnSceneBack callback);
 ```
 
-```
-public void getAudioAd(SceneBase.OnSceneBack callback);
-```
-
-```
-public void setDownFileDir(String downFileDir);
-```
-
-```
-public DownTask down(String songId, int songRate, Callback callback);
-```
 
 Note:logout() can be called if you need to logout joox but it will still listening to status in SDK
 
@@ -165,18 +157,63 @@ public interface PlayCallBack {
 }
 ```
 
-Result Code
+PlayErrState Result Code
 ```
 public class PlayErrState {
-    public static final int PLAYER_UNKNOW_ERROR = -1;
+
+
+    /**
+     * Play Success
+     */
     public static final int SUCCESS = 0;
-    public static final int UPDATE_SONG_INFO_ERROR = 1;   //Song information is abnormal
-    public static final int LIMIT_ERROR = 2;  //Copyright restrictions
-    public static final int PLAYER_SUPPORT_ERROR = 3;  //File type not supported
-    public static final int NO_RESOURCE_URL_IN_SERVER = 4;  //The resource is not available on the server
-    public static final int NO_AUTHORITY_TO_PLAY = 5;   //please log in first
-    public static final int TOKEN_SCOPE_LIMITED = 6;   //Token scope limit
-    public static final int LOGIN_EXPIRED = 7;  //The user has been offline for too long to listen to the song, please log in
+
+    /**
+     * Failed to obtain song playback information
+     */
+    public static final int UPDATE_SONG_INFO_ERROR = 1;
+
+    /**
+     * Playback frequency limit for non-VIP users (no more limit starting from SDK 2.4.0 version)
+     */
+    @Deprecated
+    public static final int LIMIT_ERROR = 2;
+
+    /**
+     * 播放组件内部错误
+     */
+    public static final int PLAYER_SUPPORT_ERROR = 3;
+
+    /**
+     * Internal error in playback component
+     */
+    public static final int NO_RESOURCE_URL_IN_SERVER = 4;
+
+    /**
+     * Song permission restrictions (for non-VIP users)
+     */
+    public static final int NO_AUTHORITY_TO_PLAY = 5;
+
+    /**
+     * Account scope restrictions
+     */
+    public static final int TOKEN_SCOPE_LIMITED = 6;
+
+    /**
+     * Login expired (expired, playback without login will return: NO_AUTHORITY_TO_PLAY)
+     */
+    @Deprecated
+    public static final int LOGIN_EXPIRED = 7;
+
+    /**
+     * Copyright restrictions
+     */
+    public static final int TOKEN_COPYRIGHT_LIMITED = 8;
+
+
+    /**
+     * unknown error
+     */
+    public static final int PLAYER_UNKNOW_ERROR = -1;
 }
 ```
 
